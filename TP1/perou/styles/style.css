@@ -1,0 +1,324 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url("../src/perou.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  color: #f0f0f0; /* Texte clair pour contraste */
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #333;
+  color: #f0f0f0;
+  width: 100%;
+}
+
+.page {
+  width: 90%; /* Largeur relative à l'écran */
+  max-width: 800px; /* Largeur maximale pour éviter que le contenu ne devienne trop large */
+  padding: 20px;
+  border: 2px solid var(--color-alpha);
+  border-radius: 10px;
+  background-color: var(--input-bg);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  min-height: auto;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+}
+
+.page img {
+    border-radius: 25%; /* Bord arrondi */
+    max-width: 100%; /* L'image ne dépasse pas la largeur de son conteneur */
+    height: auto; /* Maintient le ratio de l'image */
+    display: block; /* Évite les espaces indésirables sous l'image */
+    margin: 0 auto 20px; /* Centrage horizontal et marge en bas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    object-fit: cover; /* Assure que l'image couvre bien l'espace sans se déformer */
+  }
+
+.section-content {
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.section-content h2,
+.section-content p,
+.section-content .ul-container {
+  position: relative;
+  z-index: 1;
+}ptive_text {
+  font-size: 18px;
+  mix-blend-mode: difference;
+  color: #f0f0f0;
+}
+
+a {
+  text-decoration: none;
+  color: #99c0ff;
+  transition: color 0.3s ease;
+}
+
+a img {
+  width: 50px;
+  height: auto;
+  border-radius: 100%;
+}
+
+a:hover {
+  color: #ffcc66;
+}
+
+.ul-container {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  margin: 20px auto;
+  width: fit-content;
+  color: #222;
+}
+
+.ul-container ul {
+  list-style-type: disc;  
+  margin: 10px;  
+  padding-left: 20px;  
+  line-height: 1.5;  
+  color: #444;  
+}
+
+.ul-container a {
+  color: #3c4250;
+  transition: color 0.3s ease;
+}
+
+.ul-container a:hover {
+  color: #66f;
+}
+
+ul { 
+  list-style-type: disc;  
+  margin: 10px;  
+  padding-left: 20px;  
+  line-height: 1.5;  
+  color: #444;  
+}
+
+li::marker {
+  color: #444;
+}
+
+header {
+    text-align: center;
+    color: #f0f0f0;
+    padding-top: 100px; /* Décale le header sous la navbar */
+  }
+
+.section {
+  margin-bottom: 3rem;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  backdrop-filter: blur(5px);
+  color: #f0f0f0;
+}
+
+.section img {
+  width: 50%;
+  border-radius: 10px;
+  margin-top: auto;
+}
+
+.container {
+  width: auto;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+.navbar,
+.navbar > .container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .navbar,
+  .navbar > .container {
+    display: block;
+  }
+}
+
+.navbar {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background-color: #1f282e;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid #eceef3;
+  position: fixed;
+  z-index: 99999; /* Assure que la navbar soit en premier-plan */
+}
+
+.navbar .navbar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .navbar .navbar-header {
+    width: 100%;
+    justify-content: center;
+    flex-direction: row-reverse;
+  }
+}
+
+.navbar .navbar-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .navbar .navbar-menu {
+    display: none;
+    text-align: center;
+  }
+}
+
+.navbar .navbar-menu.active {
+  display: flex !important;
+}
+
+.navbar .navbar-menu .navbar-nav {
+  margin: 0 auto;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  .navbar .navbar-menu .navbar-nav {
+    width: 100%;
+    display: block;
+    border-top: 1px solid #eee;
+    margin-top: 1rem;
+  }
+}
+
+.navbar .navbar-menu .navbar-nav > li > a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar .navbar-menu .navbar-nav > li > a:hover {
+  color: #66f;
+}
+
+.navbar .navbar-menu .navbar-nav > li.active a {
+  color: #66f;
+}
+
+.navbar .navbar-menu .navbar-nav .navbar-dropdown {
+  position: relative;
+}
+
+.navbar .navbar-menu .navbar-nav .navbar-dropdown .dropdown {
+  padding: 0.25rem 1rem;  
+  margin: 0;
+  list-style: none;  
+  position: absolute;
+  top: 100%;
+  background-color: #1f282e;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  min-width: 160px;
+  width: auto;
+  white-space: nowrap;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  z-index: 99999;
+  border-radius: 0.75rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.navbar .navbar-menu .navbar-nav .navbar-dropdown:hover .dropdown {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar .navbar-menu .navbar-nav .navbar-dropdown .dropdown li a {
+  color: #fff;
+  padding: 0.25rem 1rem;  
+  transition: color 0.3s ease;
+  text-align: center;
+  align-items: center;
+  margin: 0;
+}
+
+.navbar .navbar-menu .navbar-nav .navbar-dropdown .dropdown li a:hover {
+  color: #66f;
+}
+
+.navbar .navbar-menu .navbar-nav .dropdown > .separator {
+  height: 1px;
+  width: 100%;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  background-color: #eceef3;
+}
+
+.navbar .navbar-header > a span {
+  color: #66f;
+}
+
+.navbar .navbar-header h4 {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .navbar .navbar-header h4 {
+    font-size: 18px;
+  }
+}

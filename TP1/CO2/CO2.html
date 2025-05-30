@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul d'émission de CO2</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>Calcul d'émission de CO2</h1>
+    <form name="co2_calc">
+        <label for="name">Nom :</label>
+        <input type="text" name="name" id="name" placeholder="Entrez votre nom">
+
+        <label for="fname">Prénom :</label>
+        <input type="text" name="fname" id="fname" placeholder="Entrez votre prénom">
+
+        <label for="depart">Ville de départ :</label>
+        <div class="autocomplete-container">
+            <input type="text" name="depart" id="depart" placeholder="Ex: Paris"
+                oninput="searchCity(this, 'depart-suggestions')">
+            <div id="depart-suggestions" class="suggestions"></div>
+        </div>
+
+        <label for="voyage">Destination en avion :</label>
+        <div class="autocomplete-container">
+            <input type="text" name="voyage" id="voyage" placeholder="Ex: Lyon"
+                oninput="searchCity(this, 'voyage-suggestions')">
+            <div id="voyage-suggestions" class="suggestions"></div>
+        </div>
+
+        <label for="distance">Distance en kilomètres :</label>
+        <input type="number" name="distance" id="distance" placeholder="Distance en km" min="0">
+
+        <div id="loading">Calcul de la distance en cours...</div>
+
+        <div class="button-container">
+            <input type="button" id="res" onclick="calc()" value="Afficher le résultat">
+            <input type="button" id="vulga" onclick="vulgariser()" value="Vulgariser">
+        </div>
+    </form>
+
+    <div id="resultat"></div>
+    <div id="vulg"></div>
+    <div id="impact-container" class="impact-container"></div>
+</body>
+
+</html>
