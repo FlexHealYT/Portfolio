@@ -1,53 +1,338 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio FTP</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/png" href="http://sc1xjvb7355.universe.wf/portfolio/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Char d'assaut et transporteur automatique</title>
+    <style>
+        /* Style général */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        figure#videoContainer {
+            width: 90%;
+            max-width: 800px;
+            background: #2a2a40;
+            border-radius: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contrôles vidéo */
+        ul.controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0;
+            width: 100%;
+        }
+
+        ul.controls li {
+            display: flex;
+            align-items: center;
+        }
+
+        ul.controls button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(145deg, #007bff, #0056b3);
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        ul.controls button:hover {
+            background: linear-gradient(145deg, #0056b3, #003d80);
+            transform: scale(1.05);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        ul.controls button:active {
+            transform: scale(0.95);
+        }
+
+        /* Barre de progression */
+        .progress-container {
+            width: 90%;
+            height: 8px;
+            background: #444;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            /* Barre de progression en dessous */
+        }
+
+        #progress {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            appearance: none;
+            background: transparent;
+            z-index: 2;
+            /* Barre bleue au-dessus */
+        }
+
+        #progress::-webkit-progress-bar {
+            background: transparent;
+        }
+
+        #progress::-webkit-progress-value {
+            background: linear-gradient(145deg, #007bff, #0056b3);
+            border-radius: 4px;
+        }
+
+        #progress::-moz-progress-bar {
+            background: linear-gradient(145deg, #007bff, #0056b3);
+            border-radius: 4px;
+        }
+
+        #green-progress {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(145deg, #8a2be2, #4b0082);
+            /* Nouvelle couleur */
+            border-radius: 4px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            /* Barre en arrière-plan */
+        }
+
+        /* Aperçu vidéo */
+        #preview {
+            position: absolute;
+            display: none;
+            width: 160px;
+            height: 90px;
+            background: #000;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            pointer-events: none;
+            z-index: 100;
+            /* Aperçu au-dessus de tout */
+            transform: translateY(-100px); /* Centre l'aperçu sur le curseur */
+        }
+
+        #preview img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        /* Plein écran */
+        [data-fullscreen="true"] {
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+            padding: 0;
+        }
+
+        [data-fullscreen="true"] video {
+            width: 100%;
+            height: calc(100vh - 80px);
+            border-radius: 0;
+        }
+
+        [data-fullscreen="true"] ul.controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(42, 42, 64, 0.9);
+            padding: 10px 20px; /* Ajout de padding pour éviter le débordement */
+            margin: 0;
+            border-radius: 0;
+        }
+
+        /* Animation subtile */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        figure#videoContainer {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <h1>Mon Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <figure id="videoContainer">
+        <!-- Vidéo principale -->
+        <video height="90%" width="90%" id="video">
+            <source src="http://sc1xjvb7355.universe.wf/portfolio/LAB3R/preview.mp4" type="video/mp4">
+        </video>
 
-    <section id="about">
-        <h2>À propos de moi</h2>
-        <p>Bienvenue sur mon portfolio. Je suis passionné par le développement web et j'aime créer des sites web
-            interactifs et modernes.</p>
-    </section>
-
-    <section id="projects">
-        <h2>Mes projets</h2>
-        <div id="project-list">
+        <!-- Aperçu vidéo -->
+        <div id="preview">
+            <img id="previewImage" src="" alt="Aperçu vidéo">
         </div>
-    </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <form id="contact-form" method="POST">
-            <input type="text" name="name" placeholder="Votre nom" required>
-            <input type="email" name="email" placeholder="Votre email" required>
-            <textarea name="message" placeholder="Votre message" required></textarea>
-            <button type="submit">Envoyer</button>
-        </form>
-    </section>
+        <ul id="video-controls" class="controls">
+            <li><button id="play-pause" type="button">&#9654; Play/Pause</button></li>
+            <li><button id="stop" type="button">&#9209; Stop</button></li>
+            <li class="progress-container">
+                <div id="green-progress"></div>
+                <progress id="progress" value="0" min="0"></progress>
+            </li>
+            <li><button id="fs" type="button">&#9974; Fullscreen</button></li>
+        </ul>
+    </figure>
 
-    <footer>
-        <p>&copy; 2025 Mon Portfolio. Tous droits réservés.</p>
-    </footer>
+    <script>
+        const supportsVideo = !!document.createElement("video").canPlayType;
+        if (supportsVideo) {
+            // Get video elements
+            const videoContainer = document.getElementById("videoContainer");
+            const video = document.getElementById("video");
+            const videoControls = document.getElementById("video-controls");
+            const progress = document.getElementById("progress");
+            const greenProgress = document.getElementById("green-progress");
+            const preview = document.getElementById("preview");
+            const previewImage = document.getElementById("previewImage");
 
-    <script src="script.js"></script>
+            // Hide the default controls
+            video.controls = false;
+
+            // Mute la vidéo
+            video.muted = true;
+
+            // Display the user defined video controls
+            videoControls.style.display = "flex";
+
+            // Get control elements
+            const playPause = document.getElementById("play-pause");
+            const stop = document.getElementById("stop");
+            const fullscreen = document.getElementById("fs");
+
+            // (Re)Lance la vidéo principale
+            playPause.addEventListener("click", (e) => {
+                if (video.paused || video.ended) {
+                    video.play();
+                    playPause.innerHTML = "&#9208; Pause";
+                } else {
+                    video.pause();
+                    playPause.innerHTML = "&#9654; Play";
+                }
+            });
+
+            // Stoppe la vidéo principale et la remet à zéro
+            stop.addEventListener("click", (e) => {
+                video.pause();
+                video.currentTime = 0;
+                progress.value = 0;
+                greenProgress.style.width = "0";
+                playPause.innerHTML = "&#9654; Play";
+            });
+
+            // Gère la durée de la vidéo principale
+            video.addEventListener("loadedmetadata", () => {
+                progress.setAttribute("max", video.duration);
+            });
+            video.addEventListener("timeupdate", () => {
+                progress.value = video.currentTime;
+            });
+
+            progress.addEventListener("click", (e) => {
+                const rect = progress.getBoundingClientRect();
+                const pos = (e.pageX - rect.left) / progress.offsetWidth;
+                video.currentTime = pos * video.duration;
+            });
+
+            // Aperçu vidéo
+            progress.addEventListener("mousemove", (e) => {
+                const rect = progress.getBoundingClientRect();
+                const pos = (e.pageX - rect.left) / progress.offsetWidth;
+                const time = pos * video.duration;
+
+                // Met à jour la position de l'aperçu
+                preview.style.left = `${e.pageX - rect.left + 140}px`;
+                preview.style.top = `${rect.top - 110}px`; // 110px au-dessus de la barre
+                preview.style.display = "block";
+
+                // Met à jour la barre violette
+                greenProgress.style.width = `${pos * 100}%`;
+
+                // Charge la miniature correspondante
+                const thumbnailIndex = Math.floor(time); // 1 miniature par seconde
+                previewImage.src = `http://sc1xjvb7355.universe.wf/portfolio/LAB3R/thumbnails/thumbnail_${thumbnailIndex}.jpg`;
+            });
+
+            progress.addEventListener("mouseleave", () => {
+                preview.style.display = "none";
+                greenProgress.style.width = "0";
+            });
+
+            // Plein écran
+            if (!document?.fullscreenEnabled) {
+                fullscreen.style.display = "none";
+            }
+
+            fullscreen.addEventListener("click", (e) => {
+                handleFullscreen();
+            });
+
+            function handleFullscreen() {
+                if (document.fullscreenElement !== null) {
+                    // The document is in fullscreen mode
+                    document.exitFullscreen();
+                    setFullscreenData(false);
+                } else {
+                    // The document is not in fullscreen mode
+                    videoContainer.requestFullscreen();
+                    setFullscreenData(true);
+                }
+            }
+
+            function setFullscreenData(state) {
+                videoContainer.setAttribute("data-fullscreen", !!state);
+            }
+
+            document.addEventListener("fullscreenchange", (e) => {
+                setFullscreenData(!!document.fullscreenElement);
+            });
+        }
+    </script>
 </body>
 
 </html>
