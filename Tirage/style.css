@@ -1,0 +1,671 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --success-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --background-color: #f8f9fa;
+    --border-color: #dee2e6;
+    --text-color: #2c3e50;
+    --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.blocAjoutJoueurs {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.blocHomme, .blocFemme {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: 6px;
+}
+
+.ajoutJoueur, .validerAjoutJoueur, .ajoutJoueuse, .validerAjoutJoueuse {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.ajoutJoueur:focus, .ajoutJoueuse:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.blocListes {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.blocListeJoueurs, .blocListeJoueuses {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 500px;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: var(--shadow);
+}
+
+.joueurParticipant, .joueuseParticipante {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    background-color: var(--background-color);
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.joueurParticipant:hover, .joueuseParticipante:hover {
+    transform: translateX(5px);
+}
+
+.croix {
+    color: var(--danger-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.croix:hover {
+    transform: scale(1.1);
+}
+
+.blocTirageAuSort {
+    display: flex;
+    justify-content: space-between; /* Espace entre les éléments */
+    align-items: center; /* Alignement vertical centré */
+    margin: 3rem 0; /* Conserve l'espacement existant */
+}
+
+.blocMatchs {
+    margin: 2rem;
+}
+
+.blocTerrainsDouble, .blocTerrainsSimple {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.blocTerrainDouble, .blocTerrainSimple {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    min-width: 300px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.terrain {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.joueur {
+    border: 1px solid var(--border-color);
+    width: 150px;
+    height: 40px;
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: white;
+    transition: var(--transition);
+}
+
+.joueur.victoire {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.joueur.defaite {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.blocJoueur {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.vs {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.remiseAZero {
+    margin: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.remiseAZero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.scoreboard {
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: var(--shadow);
+}
+
+.scoreboard h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.scoreboard-content {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.scoreboard-section {
+    flex: 1;
+    text-align: center;
+}
+
+.scoreboard-section h3 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    font-size: 1.4rem;
+}
+
+.scoreboard-joueurs, .scoreboard-joueuses {
+    display: grid;
+    gap: 1rem;
+}
+
+.scoreboard-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: var(--background-color);
+    border-radius: 6px;
+    transition: var(--transition);
+    margin-bottom: 0.5rem; /* Ajoute un espacement entre les éléments */
+}
+
+.scoreboard-item:hover {
+    transform: translateX(5px);
+}
+
+.scoreboard-item .nom {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.scoreboard-item .points {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    min-width: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.tirageAuSort {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    flex: 1;
+    text-align: center;
+}
+
+.tirageAuSort:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    background-color: #2980b9;
+}
+
+.tirageAuSort:active {
+    transform: translateY(0);
+}
+
+.blocTerrains {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.ajouterTerrainDouble, .enleverTerrainDouble, 
+.ajouterTerrainSimple, .enleverTerrainSimple {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.ajouterTerrainDouble, .ajouterTerrainSimple {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.enleverTerrainDouble, .enleverTerrainSimple {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.ajouterTerrainDouble:hover, .ajouterTerrainSimple:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+    background-color: #27ae60;
+}
+
+.enleverTerrainDouble:hover, .enleverTerrainSimple:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+    background-color: #c0392b;
+}
+
+.ajouterTerrainDouble:active, .ajouterTerrainSimple:active,
+.enleverTerrainDouble:active, .enleverTerrainSimple:active {
+    transform: translateY(0);
+}
+
+/* Media Queries pour le responsive */
+@media screen and (max-width: 1200px) {
+    .blocTerrainsDouble, .blocTerrainsSimple {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .blocTerrainDouble, .blocTerrainSimple {
+        width: 45%;
+        min-width: 300px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .blocListes {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .blocListeJoueurs, .blocListeJoueuses {
+        width: 90%;
+        max-width: 500px;
+    }
+    
+    .scoreboard-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .scoreboard-section {
+        width: 100%;
+    }
+    
+    .blocTerrainsDouble, .blocTerrainsSimple {
+        grid-template-columns: 1fr;
+        align-items: center;
+    }
+    
+    .blocTerrainDouble, .blocTerrainSimple {
+        width: 90%;
+        max-width: 500px;
+        margin: 1rem auto;
+    }
+    
+    .blocJoueur {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .joueur {
+        width: 45%;
+        min-width: 120px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .blocAjoutJoueurs {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem;
+    }
+    
+    .blocHomme, .blocFemme {
+        width: 100%;
+    }
+    
+    .blocTerrainDouble, .blocTerrainSimple {
+        padding: 1rem;
+    }
+    
+    .blocJoueur {
+        gap: 0.5rem;
+    }
+    
+    .joueur {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .vs {
+        margin: 0.5rem 0;
+    }
+    
+    .blocTerrains {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .ajouterTerrainDouble, .enleverTerrainDouble, 
+    .ajouterTerrainSimple, .enleverTerrainSimple {
+        width: 80%;
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    .blocMatchs {
+        margin: 1rem;
+    }
+    
+    .blocTerrainDouble, .blocTerrainSimple {
+        padding: 0.75rem;
+    }
+    
+    .terrain {
+        font-size: 0.9rem;
+    }
+    
+    .blocJoueur {
+        margin: 0.5rem 0;
+    }
+    
+    .joueur {
+        height: 35px;
+        font-size: 0.85rem;
+    }
+    
+    .vs {
+        font-size: 0.9rem;
+    }
+    
+    .scoreboard {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .scoreboard h2 {
+        font-size: 1.5rem;
+    }
+    
+    .scoreboard-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .tirageAuSort {
+        width: 80%;
+        max-width: 300px;
+        font-size: 1rem;
+    }
+    
+    .remiseAZero {
+        width: 80%;
+        max-width: 300px;
+        margin: 1rem auto;
+    }
+}
+
+/* Ajustements pour les très petits écrans */
+@media screen and (max-width: 375px) {
+    .blocTerrainDouble, .blocTerrainSimple {
+        padding: 0.5rem;
+    }
+    
+    .terrain {
+        font-size: 0.8rem;
+    }
+    
+    .joueur {
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    
+    .scoreboard-item {
+        padding: 0.75rem;
+    }
+    
+    .scoreboard-item .nom {
+        font-size: 0.9rem;
+    }
+    
+    .scoreboard-item .points {
+        font-size: 0.9rem;
+        padding: 0.2rem 0.5rem;
+    }
+}
+
+/* Ajustements pour l'orientation paysage sur mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .blocTerrainsDouble, .blocTerrainsSimple {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .blocTerrainDouble, .blocTerrainSimple {
+        margin: 0.5rem auto;
+    }
+    
+    .blocJoueur {
+        margin: 0.5rem 0;
+    }
+    
+    .blocTirageAuSort {
+        margin: 1rem 0;
+    }
+    
+    .blocMatchs {
+        margin: 1rem;
+    }
+    
+    .scoreboard {
+        margin: 1rem;
+    }
+}
+
+.scoreboard-popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 60px;
+    transition: background-color 0.3s ease; /* Transition pour le fondu */
+}
+
+.scoreboard-popup.open {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.4); /* Fond noir avec opacité */
+}
+
+.scoreboard-popup-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 95%;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow-y: auto;
+    max-height: 80vh;
+    font-size: 0.95rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    transform: translateY(100%); /* Position initiale en bas */
+}
+
+.scoreboard-popup.open .scoreboard-popup-content {
+    animation: slideUp 0.5s ease-out forwards; /* Animation de glissement vers le haut */
+}
+
+.scoreboard-popup.close .scoreboard-popup-content {
+    animation: slideDown 0.5s ease-out forwards; /* Animation de glissement vers le bas */
+}
+
+.scoreboard-popup.open {
+    animation: fadeIn 0.5s ease-out forwards; /* Animation de fondu pour l'overlay */
+}
+
+.scoreboard-popup.close {
+    animation: fadeOut 0.5s ease-out forwards; /* Animation de fondu pour l'overlay */
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}
+
+::-webkit-scrollbar {
+    display: none; /* Masque la barre de défilement dans les navigateurs basés sur WebKit */
+}
+
+.scoreboard-popup-content::-webkit-scrollbar {
+    display: none; /* Masque la barre de défilement dans les navigateurs basés sur WebKit */
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+.scoreboard-item.or {
+    background-color: #FFD700; /* Or */
+}
+
+.scoreboard-item.argent {
+    background-color: #C0C0C0; /* Argent */
+}
+
+.scoreboard-item.bronze {
+    background-color: #CD7F32; /* Bronze */
+}
+
+.boutonScoreboard {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-left: 1rem; /* Ajoute un espacement à gauche */
+}
+
+.boutonScoreboard:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.boutonScoreboard:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.boutonScoreboard img {
+    width: 30px;
+    height: 30px;
+}

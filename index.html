@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio FTP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="http://sc1xjvb7355.universe.wf/portfolio/favicon.png">
+</head>
+
+<body>
+    <header>
+        <h1>Mon Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>À propos de moi</h2>
+        <p>Bienvenue sur mon portfolio. Je suis passionné par le développement web et j'aime créer des sites web
+            interactifs et modernes.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Mes projets</h2>
+        <div id="project-list">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <form id="contact-form" method="POST">
+            <input type="text" name="name" placeholder="Votre nom" required>
+            <input type="email" name="email" placeholder="Votre email" required>
+            <textarea name="message" placeholder="Votre message" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Mon Portfolio. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

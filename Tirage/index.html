@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirage au sort Badminton</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blocAjoutJoueurs">
+        <div class="blocHomme">
+            <label for="ajoutJoueur">Homme</label>
+            <input type="text" class="ajoutJoueur" name="ajoutJoueur">
+            <button class="validerAjoutJoueur">Valider</button>
+        </div>
+        <div class="blocFemme">
+            <label for="ajoutJoueuse">Femme</label>
+            <input type="text" class="ajoutJoueuse" name="ajoutJoueuse">
+            <button class="validerAjoutJoueuse">Valider</button>
+        </div>
+    </div>
+
+    <div class="blocListes">
+        <div class="blocListeHomme">
+            <div class="blocListeJoueurs"></div>
+            <div class="nbJoueurs">Nombre de joueurs : 0</div>
+        </div>
+        <div class="blocListeFemme">
+            <div class="blocListeJoueuses"></div>
+            <div class="nbJoueuses">Nombre de joueuses : 0</div>
+        </div>
+    </div>
+
+    
+    <div id="scoreboardPopup" class="scoreboard-popup">
+        <div class="scoreboard-popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>Tableau des scores</h2>
+            <div class="scoreboard-content">
+                <div class="scoreboard-section">
+                    <h3>Joueurs</h3>
+                    <div class="scoreboard-joueurs"></div>
+                </div>
+                <div class="scoreboard-section">
+                    <h3>Joueuses</h3>
+                    <div class="scoreboard-joueuses"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="blocTerrains">
+        <button class="ajouterTerrainDouble">Ajouter un terrain de double</button>
+        <button class="ajouterTerrainSimple">Ajouter un terrain de simple</button>
+        <button class="enleverTerrainDouble">Enlever un terrain de double</button>
+        <button class="enleverTerrainSimple">Enlever un terrain de simple</button>
+    </div>
+    
+    <div class="blocMatchs">
+        <div class="blocTerrainsDouble"></div>
+        <div class="blocTerrainsSimple"></div>
+    </div>
+    
+    <div class="blocTirageAuSort">
+        <button class="tirageAuSort">Tirer au sort</button>
+        <button id="ouvrirScoreboard" class="boutonScoreboard">
+            <img src="score-board.png" alt="Scoreboard" width="30" height="30">
+        </button>
+    </div>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <script src="tirage.js"></script>
+</body>
+</html> 

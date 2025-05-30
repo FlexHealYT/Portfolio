@@ -1,0 +1,374 @@
+/* Reset de base pour assurer la cohérence entre les navigateurs */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  padding-top: 100px;
+}
+
+.project-theme {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px; /* Ajuste la taille selon tes besoins */
+  height: auto;
+  z-index: 10;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+}
+
+/* Conteneur principal du projet */
+.post {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Vignette d'image */
+.thumbnail-wrapper {
+  position: relative;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.project-image,
+.project-video {
+  width: 100%;
+  height: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.project-video {
+  display: none;
+}
+
+/* Boutons d'action */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.v-btn {
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.v-btn:hover {
+  background-color: #555;
+}
+
+/* Badge de compétence */
+.skill {
+  display: inline-block;
+  background-color: #a2a475;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin: 10px;
+}
+
+/* Contenu du projet */
+.content {
+  padding: 20px;
+}
+
+.title-wrapper .title {
+  font-size: 1.8rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+p.course {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .thumbnail {
+    height: 200px;
+  }
+
+  .title-wrapper .title {
+    font-size: 1.5rem;
+  }
+
+  .v-btn {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .thumbnail {
+    height: 150px;
+  }
+
+  .title-wrapper .title {
+    font-size: 1.3rem;
+  }
+}
+
+/* En-tête toujours visible */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ff6347;
+}
+
+/* Sections principales */
+section {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  padding-top: 100px;
+}
+
+/* Mise en page des projets sous forme de carrés remplissant l'espace disponible */
+#project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  width: 100%;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* Assure que le titre reste en bas */
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-item img,
+.project-item video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-item h3 {
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+}
+
+/* Titres et paragraphes */
+h2 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #555;
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+h4 {
+  color: #777;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+p {
+  margin: 10px 0;
+  color: #555;
+}
+
+/* Formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #333;
+  outline: none;
+}
+
+form button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #555;
+}
+
+/* Pied de page */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #333;
+  color: #fff;
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #project-list {
+    flex-direction: column;
+  }
+
+  .project-item {
+    flex: 1 1 100%;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav ul li {
+    margin: 0;
+  }
+}
+
+/* Style du menu de navigation */
+#menu {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.page-btn {
+  padding: 5px 10px;
+  border: 1px solid #000;
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.page-btn:hover {
+  background-color: #ddd;
+}

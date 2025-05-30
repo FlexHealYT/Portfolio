@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="http://sc1xjvb7355.universe.wf/portfolio/favicon.png">
+    <title>Présentation de Rex</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+    <style>
+        /* Style général */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        /* Boutons de navigation */
+        .navigation {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .page-btn,
+        .nav-btn {
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(145deg, #007bff, #0056b3);
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-btn:hover,
+        .nav-btn:hover {
+            background: linear-gradient(145deg, #0056b3, #003d80);
+            transform: scale(1.05);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-btn.active {
+            background: linear-gradient(145deg, #28a745, #1e7e34);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Conteneur PDF */
+        .pdf-container {
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            padding: 20px;
+            background: #2a2a40;
+            border-radius: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        canvas {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            background: #1e1e2f;
+        }
+
+        /* Animation subtile */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Présentation de Rex</h1>
+
+    <div class="container">
+
+        <button class="nav-btn" id="automaticView">&#9193; Lecture Automatique</button>
+
+        <!-- Bouton pour ouvrir le PDF dans un nouvel onglet -->
+        <a class="nav-btn" href="http://sc1xjvb7355.universe.wf/portfolio/LAB2R/presentationRex.pdf"
+            target="_blank">Ouvrir dans un nouvel onglet</a>
+
+        <!-- Menu de navigation -->
+        <div class="navigation">
+            <button class="nav-btn" id="prevPage">&#9664; Précédent</button>
+            <div id="menu"></div>
+            <button class="nav-btn" id="nextPage">Suivant &#9654;</button>
+        </div>
+
+        <!-- Affichage du PDF -->
+        <div class="pdf-container">
+            <canvas id="pdfCanvas"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const url = "http://sc1xjvb7355.universe.wf/portfolio/LAB2R/presentationRex.pdf";
+        let pdfDoc = null,
+            pageNum = 1,
+            pageRendering = false,
+            canvas = document.getElementById("pdfCanvas"),
+            ctx = canvas.getContext("2d");
+
+        pdfjsLib.getDocument(url).promise.then(pdf => {
+            pdfDoc = pdf;
+            renderPage(pageNum);
+            createPaginationButtons(pdf.numPages);
+        });
+
+        function renderPage(num) {
+            pageRendering = true;
+            pdfDoc.getPage(num).then(page => {
+                let viewport = page.getViewport({ scale: 1.5 });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                let renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+                let renderTask = page.render(renderContext);
+                renderTask.promise.then(() => {
+                    pageRendering = false;
+                });
+            });
+        }
+
+        function goToPage(num) {
+            if (num >= 1 && num <= pdfDoc.numPages) {
+                pageNum = num;
+                renderPage(pageNum);
+            }
+        }
+
+        function createPaginationButtons(totalPages) {
+            const menu = document.getElementById("menu");
+            menu.innerHTML = "";
+            for (let i = 1; i <= totalPages; i++) {
+                let btn = document.createElement("button");
+                btn.textContent = i;
+                btn.className = "page-btn";
+                btn.onclick = () => goToPage(i);
+                menu.appendChild(btn);
+            }
+        }
+
+        document.getElementById("automaticView").addEventListener("click", () => {
+            while (true) {
+                setTimeout(() => {
+                    // Code à exécuter après 3 secondes
+                    console.log("3 secondes se sont écoulées");
+                    if (pageNum < pdfDoc.numPages) goToPage(pageNum + 1);
+                    else goToPage(0)
+                }, 3000); // 3000 millisecondes = 3 secondes
+            }
+        });
+
+        document.getElementById("prevPage").addEventListener("click", () => {
+            if (pageNum > 1) goToPage(pageNum - 1);
+        });
+
+        document.getElementById("nextPage").addEventListener("click", () => {
+            if (pageNum < pdfDoc.numPages) goToPage(pageNum + 1);
+        });
+    </script>
+</body>
+
+</html>

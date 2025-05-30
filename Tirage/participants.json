@@ -1,0 +1,25 @@
+{
+    "joueurs": [
+        { "nom": "Quentin", "points": 0 },
+        { "nom": "Leo", "points": 0 },
+        { "nom": "Serge", "points": 0 },
+        { "nom": "Nathan", "points": 0 },
+        { "nom": "JB", "points": 0 },
+        { "nom": "Seb", "points": 0 },
+        { "nom": "Mickael", "points": 0 },
+        { "nom": "Olivier", "points": 0 },
+        { "nom": "Yann", "points": 0 },
+        { "nom": "Hugo", "points": 0 },
+        { "nom": "Christophe", "points": 0 },
+        { "nom": "Richard", "points": 0 }
+    ],
+    "joueuses": [
+        { "nom": "Daisy", "points": 0 },
+        { "nom": "Alexia", "points": 0 },
+        { "nom": "Regine", "points": 0 },
+        { "nom": "Jessica", "points": 0 },
+        { "nom": "Caroline", "points": 0 },
+        { "nom": "Carole", "points": 0 },
+        { "nom": "Lise", "points": 0 }
+    ]
+}
