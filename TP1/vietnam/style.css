@@ -1,0 +1,107 @@
+h2{
+	color : Black;
+	font-size : 50px;
+	margin: auto;
+	position: absolute;
+	top: 250;
+	left: 0;
+	right: 0;
+	text-align: center;
+
+} 
+img{
+	position : relative;
+	border-radius: 10px;
+	object-fit: cover;
+	width: 275px;
+	height: 275px;
+	margin : 15px;
+	filter: brightness(90%);
+}
+
+#image1{
+	top : 0px;
+}
+#image2{
+	top : -150px;
+}
+#image3{
+	top : 0px;
+}
+#image4{
+	top : -150px;
+}
+#image5{
+	top : 0px;
+}
+#image6{
+	top : -150px;
+}
+#image7{
+	top : 0px;
+}
+#image8{
+	top : -150px;
+}
+#image9{
+	top : 0px;
+}
+#image10{
+	top : -150px;
+}
+#image11{
+	top : 0px;
+}
+#image12{
+	top : -150px;
+}
+#image13{
+	top : 0px;
+}
+#image14{
+	top : -150px;
+}
+#image15{
+	top : 0px;
+}
+#image16{
+	top : -150px;
+}
+
+
+.top-band {
+  background-color: rgb(255, 253, 115); 
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  z-index: 1000; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  gap : 10px;
+  
+}
+.top-band .button {
+  font-size: 20px; 
+  margin: 0;
+}
+.button{
+	display: inline-block;
+	line-height: 1; 
+	text-align: center;
+	background : transparent; 
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+	cursor: pointer;
+	border: 2px solid black;
+	text-decoration: none;
+	font-weight : normal;
+	color : black;
+}
+.button:hover {
+    background-color: black !important;
+    color: white !important;
+}

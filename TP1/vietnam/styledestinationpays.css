@@ -1,0 +1,99 @@
+.paragraph {
+	white-space: pre-line;
+	font-size: 25px;
+	margin-left: 20%;
+	font-family: arial;
+	white-space: pre-line;
+	display: inline-block;
+	margin-bottom: 50px;
+}
+
+.titre {
+	font-size: 35px;
+	white-space: pre-line;
+	font-family: Montserrat, sans-serif;
+	margin-left: 20%;
+	font-weight: bold;
+	margin-bottom: 15px;
+	margin-top: 55px;
+}
+
+img {
+	position: relative;
+	border-radius: 25px;
+	object-fit: cover;
+	width: 500px;
+	height: 500px;
+	margin: 15px;
+	margin-left: 20%;
+}
+
+.top-band {
+	background-color: rgb(255, 253, 115);
+	height: 50px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+
+}
+
+.top-band .button {
+	font-size: 20px;
+	margin: 0;
+}
+
+.button:hover {
+	background-color: black !important;
+	color: white !important;
+
+}
+
+.button {
+	display: inline-block;
+	line-height: 1;
+	text-align: center;
+	background: transparent;
+	color: black;
+	border: none;
+	padding: 8px 20px;
+	border-radius: 50px;
+	cursor: pointer;
+	border: 2px solid black;
+	text-decoration: none;
+	font-weight: normal;
+	margin: 5px;
+	margin-left: 300px;
+
+}
+
+.destinations-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-left: 20%;
+	margin-bottom: 20px;
+}
+
+a.destination {
+	width: 200px;
+	display: inline-block;
+	text-align: center;
+	padding: 10px;
+	background-color: transparent;
+	border: 2px solid black;
+	border-radius: 50px;
+	text-decoration: none;
+	color: black;
+	transition: all 0.3s ease;
+}
+
+a.destination:hover {
+	background-color: black;
+	color: white;
+}
